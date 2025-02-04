@@ -35,3 +35,4 @@
 * go to project's ```chatter``` directory where ```manage.py``` resides.
 * Run ```python manage.py runserver <hostname>:<portname>``` to run the webserver.( If there is some error you might have missed some installation please complete those and debug the error then proceed)
 * In browser type ``` <hostname>:<portname>``` to check the server is working properly or not.
+
