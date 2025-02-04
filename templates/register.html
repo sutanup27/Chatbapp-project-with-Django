@@ -1,0 +1,40 @@
+{% extends "base_app.html" %}
+{% block content %}
+<div class="container-fluid "> 
+    <div class="row">
+        <div class='col-sm-9 main'>
+            <div class="basic">
+                <h2>Hey! I am chatter!</h2>
+                <h2>Chat with me!!</h2>
+            </div>
+        </div> 
+        <div class='col-sm-3 pannels'><h1></h1>
+            <div class="basic_pannel">
+                <h3> Sign up </h3>
+                <form action="register" method="post">
+                    {% csrf_token %}
+                    <p><label for="first_name">First Name</label></p>
+                    <p><input class="form-control" type="text" id="first_name" name="first_name"></p>
+                    <p><label for="last_name">Last Name</label></p>
+                    <p><input class="form-control" type="text" id="last_name" name="last_name"></p>
+                    <p><label for="username">User Name</label></p>
+                    <p><input class="form-control" type="text" id="username" name="username"></p>
+                    <p><label for="email">E-mail</label></p>
+                    <p><input class="form-control" type="text" id="email" name="email"></p>
+                    <p><label for="password">Password</label></p>
+                    <p><input class="form-control" type="password" id="password1" name="password1"></p>
+                    <p><label for="password">Confirm Password</label></p>
+                    <p><input class="form-control" type="password" id="password2" name="password2"></p>
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                    <a href='/accounts/login' class="btn btn-primary">Sign in</a>
+                </form> 
+                <div>
+                    {% for message in messages %}
+                    <p>{{ message }}</p>
+                    {% endfor %}
+                </div>   
+            </div>
+        </div> 
+    </div>
+</div>
+{% endblock %}

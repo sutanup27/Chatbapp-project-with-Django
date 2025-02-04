@@ -1,0 +1,167 @@
+{% extends "base_app.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid "> 
+    <div class="row">
+        <div class='col-sm-9 main'>
+            {% if user.is_authenticated %}
+            <div class=' row'>
+                <div class="col-12 ">
+                    <div class='chat_window  border'>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="send ">
+                                    <div class="row">
+                                        <div class="col-12 auther"> sender name </div>
+                                        <div class="col-12  content"> dsfdsfsdffddfsgfdsdsfsssssssssss gfdssssssssrew rewtewteeeeeeerewytrytyertywrtywwrtrwtreytrewregdtr   trhreyhre tr ty tryretye r r y e fsdfdsfds sdfsfsdffs sdfsfwe fsfeweewrwe rewcsxf </div>
+                                        <div class="col-12  time"> 02/05/2020 17:05:54 </div>
+                                    </div>    
+                                </div>      
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="receive ">
+                                    <div class="row">
+                                        <div class="col-12 auther"> sender name </div>
+                                        <div class="col-12  content"> dsfdsfsdffddfsgfdsdsfsssssssssss gfdssssssssrew rewtewteeeeeeerewytrytyertywrtywwrtrwtreytrewregdtr   trhreyhre tr ty tryretye r r y e fsdfdsfds sdfsfsdffs sdfsfwe fsfeweewrwe rewcsxf </div>
+                                        <div class="col-12  time"> 02/05/2020 17:05:54 </div>
+                                    </div>    
+                                </div>        
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="send ">
+                                    <div class="row">
+                                        <div class="col-12 auther"> sender name </div>
+                                        <div class="col-12  content"> hello wqewqewqewqew</div>
+                                        <div class="col-12  time"> 02/05/2020 17:05:54 </div>
+                                    </div>    
+                                </div>      
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="receive ">
+                                    <div class="row">
+                                        <div class="col-12 auther"> sender name </div>
+                                        <div class="col-12  content"> hi ewqwewqewq ewqqeqwewwqweqwwewqewqewq ddsa sfwdfd sfsddfds wrewrew wrewrewr ewerwe</div>
+                                        <div class="col-12  time"> 02/05/2020 17:05:54 </div>
+                                    </div>    
+                                </div>        
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="send ">
+                                    <div class="row">
+                                        <div class="col-12 auther"> sender name </div>
+                                        <div class="col-12  content"> hello </div>
+                                        <div class="col-12  time"> 02/05/2020 17:05:54 </div>
+                                    </div>    
+                                </div>      
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="receive ">
+                                    <div class="row">
+                                        <div class="col-12 auther"> sender name </div>
+                                        <div class="col-12  content"> hi </div>
+                                        <div class="col-12  time"> 02/05/2020 17:05:54 </div>
+                                    </div>    
+                                </div>        
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    
+                </div>
+                <div class="col-12  ">
+                    <div class="write_pad">
+                            <textarea id="chat-message-input" class="input_box" type="text" ></textarea>
+                            <label for="file-input" class="btn btn-info btn-lg">
+                                <i class="glyphicon glyphicon-paperclip " aria-hidden="true"></i>
+                                <input type="file" class="file-input hide" style="display: none; " name="file-input" id="file-input">
+                            </label>                       
+                            <button id="chat-message-submit" type="button" class="btn btn-info btn-lg">
+                                <span class="glyphicon glyphicon-send"></span> 
+                            </button>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="basic">
+                <h2>Hey! I am chatter!</h2>
+                <h2>Chat with me!!</h2>
+            </div>
+            {% endif %}
+        </div> 
+        <div class='col-sm-3 pannels'><h1></h1>
+            {% if user.is_authenticated %}
+            <div class="row" >
+                <a class="col-lg-4 btn pannel_design border " href='/chat'>CHAT</a>
+                <a class="col-lg-4 btn pannel_design border " href='/accounts/contacts'>CONTACTS</a>
+                <a class="col-lg-4 btn pannel_design border active" href='/chat/search'>SEARCH</a>
+            </div>
+                <form action="search_name" method="get">
+                    {% csrf_token %}
+                    <div class='search_class '>
+                        <div >
+                            <input type="text" class="inline_a" placeholder="Search.." name="username_substring" id="username_substring" >
+                            <button type="submit" class="inline_b" ><i class="fa fa-search " ></i></button>
+                        </div>
+                    </div>
+                </form>    
+                {% for user in users %}
+                <div class="row chat_box border">
+                    <div class="col-2">
+                        <img src="{{ user.img_link }}" class="rounded-circle" width="45" height="45">
+                    </div>
+                    <div class="col-10">
+                        <a style="text-decoration: none;" href= "/chat/get_or_create_room/{{ user.username }}" >
+                            <div class="row  ">
+                                    <div class="box_top col-xl-12"><b>{{ user.username }}</b></div>
+                                    <div class="box_bottom col-xl-12"><i>{{ user.first_name }} {{ user.last_name }}</i></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+            <div class="basic_pannel">
+                <h3> Log In </h3>
+                <form action="/accounts/login" method="post">
+                    {% csrf_token %}
+                    <p><label for="username">USERNAME</label></p>
+                    <p><input class="form-control" type="text" id="username" name="username"></p>
+                    <p><label for="password">PASSWORD</label></p>
+                    <p><input class="form-control" type="password" id="password" name="password"></p>
+                    <input type="submit" class="btn btn-primary" value="Sign in">
+                    <a href='/accounts/register' class="btn btn-primary">Sign up</a>
+                </form>
+                <div>
+                    {% for message in messages %}
+                    <p>{{ message }}</p>
+                    {% endfor %}
+                </div>   
+            </div>
+            {% endif %}
+        </div> 
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+    $('.chat_window').scrollTop($('.chat_window')[0].scrollHeight);
+</script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.js'></script>
+    <script type="text/javascript" src="{% static 'js/chatroom.js' %}"></script>
+
+
+{% endblock %}
+

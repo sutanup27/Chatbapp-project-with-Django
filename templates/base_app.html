@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>PiChat</title>
+</head>
+<div  class="body" id="page">
+    <header class='header container-fluid border'>
+        <div class="row " >
+            <div class='col-md nav-head '><img src="{% static 'img/logo1.png' %}" class="logo"></div> 
+            {% if user.is_authenticated %}    
+            <a class='col-md-2 nav_name' :class="currentTab === 'Profile' ? 'active' : ''" v-on:click="currentTab='Profile'" @click="displayProfile('')" >Hi, {{ user.first_name }}</a>
+            {% endif %}
+            <a class='col-md-2 nav_tab ' href='/' :class="currentTab === 'Home' ? 'active' : ''" v-on:click="currentTab='Home'">HOME</a>
+            {% if user.is_authenticated %}    
+            <a href='/accounts/logout' class='col-md-2 nav_tab' :class="currentTab === 'logout' ? 'active' : ''" v-on:click="currentTab='logout'">LOGOUT</a>
+            {% endif %}
+            <a href='/about' class='col-md-2 nav_tab' :class="currentTab === 'about' ? 'active' : ''" v-on:click="currentTab='about'">ABOUT</a>   
+        </div>
+    </header> 
+        {% block content %}
+        {% endblock %}
+        <div class="container-fluid footer border">
+        All rights reserved @sutanu.p
+        </div>
+        <script>
+            var user="{{user}}";
+// Add the following code if you want the name of the file appear on select
+function readURL(input) {
+    document.querySelector(".files").innerHTML=''
+    for(var i=0;i<input.files.length;i++){
+        document.querySelector(".files").innerHTML+='<label class="upload_files">'+input.files[i].name+'</label>'
+    }
+};
+
+function sendApply(input) {
+    document.querySelector(".files").innerHTML=''
+};
+
+
+function setScroll(){
+    try {
+//    $('.chat_window').scrollTop($('.chat_window')[0].scrollHeight);
+    setTimeout(() => {  $('.chat_window').scrollTop($('.chat_window')[0].scrollHeight);},20);    
+ //   var objDiv = document.getElementById("chat_window_id");
+ //   objDiv.scrollTop = objDiv.scrollHeight;
+    }
+    catch{
+
+    }
+}
+
+function getCookie(name) {
+var cookieValue = null;
+if (document.cookie && document.cookie !== '') {
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        // Does this cookie string begin with the name we want?
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+        }
+    }
+}
+return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+var profile_image_reader = new FileReader();
+var profile_image_file=null
+var output2=null
+function preview_image(event) 
+{
+    profile_image_reader.onload = function()
+{
+    output2 = document.getElementById('modal_image');
+    output2.src = profile_image_reader.result;
+}
+profile_image_file=event.target.files[0]
+profile_image_reader.readAsDataURL(profile_image_file);
+}
+
+function on_preview(){
+    var output1 = document.getElementById('modal_profile_image');
+    if(profile_image_reader.result!=null){
+        output1.src = profile_image_reader.result;
+        profile_image_reader.readAsDataURL(profile_image_file);
+    }
+}
+
+function toggleProfileInput(arg){
+var classlist=document.getElementsByClassName(arg)
+if(classlist[1].className.includes("hide"))
+{
+    classlist[1].className=arg;
+    classlist[0].className=arg+' hide';    
+}
+else{
+    classlist[0].className=arg;
+    classlist[1].className=arg+' hide';        
+}
+}
+
+function resetAllProfileInputs(){
+if(document.getElementsByClassName('owner_profile_name')[0].className.includes("hide"))
+    toggleProfileInput('owner_profile_name');
+if(document.getElementsByClassName('owner_profile_email')[0].className.includes("hide"))
+    toggleProfileInput('owner_profile_email');
+if(document.getElementsByClassName('owner_profile_status')[0].className.includes("hide"))
+    toggleProfileInput('owner_profile_status');
+}
+
+
+
+        </script>  
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.js'></script>
+        <script  type="text/javascript" src="{% static 'js/jquery.js' %}" ></script>
+        <script  type="text/javascript" src="{% static 'js/vue.js' %}" ></script>
+        <script  type="text/javascript" src="{% static 'js/axios.min.js' %}" ></script>
+        <script  type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+        <script  type="text/javascript" src="{% static 'js/pannel.js' %}"></script>
+    </div>
+</html>
