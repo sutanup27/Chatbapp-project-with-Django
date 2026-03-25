@@ -1,0 +1,11 @@
+Django==2.2
+djangorestframework==3.11.0
+django-cors-headers==3.6.0
+channels==2.4.0
+channels-redis==2.4.2
+daphne==2.5.0
+python-decouple==3.4
+Pillow==7.2.0
+pytz==2020.1
+six==1.15.0
+sqlparse==0.4.1
