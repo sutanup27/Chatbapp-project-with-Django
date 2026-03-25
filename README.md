@@ -13,7 +13,7 @@
     ```pip install django ```
 * install django rest-api-framework
     ```pip install djangorestframework```
-* install 
+
 
 ## Django channels Environment set-up
 * install radis-server to work with django-channels
