@@ -206,7 +206,7 @@ Key API endpoints available:
 - See API documentation in admin panel for complete list
   
 ## Demo
-
+CLick to play the video below:
 [![Watch Demo](https://img.youtube.com/vi/verJp_fhGxU/0.jpg)](https://www.youtube.com/watch?v=verJp_fhGxU)
 ## Troubleshooting
 
