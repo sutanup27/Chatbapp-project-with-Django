@@ -98,13 +98,15 @@ CHANNEL_LAYERS = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'mongodjango',
-        'HOST': 'mongodb://mongodjongo:mongodjongo27@localhost:27017/momgodjango',
-        'USER': 'mongodjango',
-        'PASSWORD': 'mongodjango27',
+    'ENGINE': 'djongo',
+    'NAME': 'mongodjango',
+    'CLIENT': {
+        'host': 'mongodb://localhost:27017',
+        }
     }
 }
+
+
 
 #DATABASES = {
 #    'default': {
