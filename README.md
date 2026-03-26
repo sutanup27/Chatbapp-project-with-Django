@@ -109,6 +109,7 @@ If using MongoDB as the database:
    show dbs
    ```
 
+Note: It is always best to use WSL for smoother installations.
 ## Running the Application
 
 ### Step 1: Start Redis Server
