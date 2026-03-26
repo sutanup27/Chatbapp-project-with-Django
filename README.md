@@ -208,7 +208,7 @@ Key API endpoints available:
 ## Demo
 - Click to play the video below:
 
-[![Watch Demo](https://img.youtube.com/vi/verJp_fhGxU/0.jpg)](https://www.youtube.com/watch?v=verJp_fhGxU)
+[![Watch Demo](https://img.youtube.com/vi/h5WfycmQsZs/0.jpg)](https://www.youtube.com/watch?v=h5WfycmQsZs)
 ## Troubleshooting
 
 ### Redis Connection Error
