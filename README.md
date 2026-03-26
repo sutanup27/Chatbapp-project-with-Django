@@ -204,7 +204,10 @@ Key API endpoints available:
 - `POST /api/chatrooms/` - Create a new chat room
 - `GET /api/messages/` - List messages
 - See API documentation in admin panel for complete list
+  
+## Demo
 
+[![Watch Demo](https://img.youtube.com/vi/verJp_fhGxU/0.jpg)](https://www.youtube.com/watch?v=verJp_fhGxU)
 ## Troubleshooting
 
 ### Redis Connection Error
